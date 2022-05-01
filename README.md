@@ -5,6 +5,8 @@ To run Frontcd to client run 'npm start' will run on port 3000
 
 To run Backend go back run 'node server/index.js' will run on port 3001
 
+SQL Database was messedUp so backend part with sql in not functional.  
+
 
 
 ## Screenshot of Password Email
