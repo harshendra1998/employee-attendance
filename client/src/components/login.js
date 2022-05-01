@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
-export default function Login({ setLogged, setLoding }) {
+export default function Login({ setLogged, setLoding, settoken }) {
     const [register, setRegister] = useState(false);
     const [email, setemail] = useState('');
     const [password, setPassword] = useState('');
@@ -17,7 +17,7 @@ export default function Login({ setLogged, setLoding }) {
     const logged = () => {
         setLoding(true);
         axios.post('http://localhost:3001/signin', { email, password }
-        ).then(e => { console.log(e.data); localStorage.setItem('token', e.data.token); }).finally(() => setLoding(false))
+        ).then(e => { console.log(e.data); localStorage.setItem('token', e.data.token); settoken(e.data.token)}).finally(() => setLoding(false))
         setLogged({ name: 'harsehdra' })
     }
 
