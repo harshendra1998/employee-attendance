@@ -107,12 +107,12 @@ app.post("/newemployee", (req, res) => {
         host: 'smtp.ethereal.email',
         port: 587,
         auth: {
-            user: 'lilly.fadel87@ethereal.email',
+            user: 'lilly.fadel87@ethereal.email', //ethereal mail
             pass: 'mqsKwRTzJmHskqncQ5'
         },
       })
     const mailData = {
-        from: 'lilly.fadel87@ethereal.email',
+        from: 'lilly.fadel87@ethereal.email', 
         to: req.body.email,
         subject: 'Password from Employee Attendance',
         html: `<p>Hi ${req.body.name}, Your Password to login Employee Attendance is- ${random_password}</p>`,
