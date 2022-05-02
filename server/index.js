@@ -58,7 +58,22 @@ app.get("/creatattendancetable", (req, res) => {
     })
 });
 
-app.get("/setattendance", (req, res) => {
+app.get("/userattendance", auth, (req, res) => {
+    const decoded = await jwt.verify(req.token, process.env.JWT_SECRET_KEY)
+
+    let today = new moment().format("MMM Do YYYY");
+    let data = { email: req.body.email };
+    let sqlQuery = 'SELECT * FROM attendance WHERE email=?';
+    con.query(sqlQuery, data, (err, res) => {
+        if (err) {res.send({success: false, error: err})}
+        console.log('set data');
+        res.send({success: true})
+    })
+});
+
+app.post("/setattendance", auth, (req, res) => {
+    const decoded = await jwt.verify(req.token, process.env.JWT_SECRET_KEY)
+
     let today = new moment().format("MMM Do YYYY");
     let data = { email: req.body.email, attenddate: today};
     let sqlQuery = 'INSERT INTO attendance SET ?';
