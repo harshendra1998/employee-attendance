@@ -24,7 +24,7 @@ export default function Login({ setLogged, setLoding, settoken }) {
     const createacc = () => {
         setLoding(true);
         axios.post('http://localhost:3001/newemployee', { name, email, dateofjoin }
-        ).then(e => { console.log(e.data); alert('Password sent to given mail login Using that') }).finally(() => setLoding(false))
+        ).then(e => { console.log(e.data); alert('Password sent to given mail login Using that'); setRegister(false) }).finally(() => setLoding(false))
         setLogged({ name: 'harsehdra' })
     }
 
