@@ -134,8 +134,8 @@ app.post("/newemployee", (req, res) => {
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
 });
-app.post("/signin", (req, res) => {
-    const token = jwt.sign({email: req.body.email, password: req.body.password}, process.env.JWT_SECRET_KEY,{expiresIn: "90",})
+app.post("/signin", async (req, res) => {
+    const token = await jwt.sign({email: req.body.email, password: req.body.password}, process.env.JWT_SECRET_KEY);
     res.json({ message: "Hello from server!", token, success:true });
 });
 app.get("/askdata", (req, res) => {
