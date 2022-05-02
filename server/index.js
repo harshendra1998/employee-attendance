@@ -104,16 +104,15 @@ app.post("/newemployee", (req, res) => {
     // })
 
     const transporter = nodemailer.createTransport({
-        port: 465,
-        host: "smtp.gmail.com",
+        host: 'smtp.ethereal.email',
+        port: 587,
         auth: {
-          user: process.env.EMAIL,
-          pass: process.env.PASS,
+            user: 'lilly.fadel87@ethereal.email',
+            pass: 'mqsKwRTzJmHskqncQ5'
         },
-        secure: true,
       })
     const mailData = {
-        from: process.env.EMAIL,
+        from: 'lilly.fadel87@ethereal.email',
         to: req.body.email,
         subject: 'Password from Employee Attendance',
         html: `<p>Hi ${req.body.name}, Your Password to login Employee Attendance is- ${random_password}</p>`,
